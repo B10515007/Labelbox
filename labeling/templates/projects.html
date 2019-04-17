@@ -1,0 +1,38 @@
+
+{% extends "base.html" %}
+
+{% block title %} Project {% endblock %}
+
+{% block content %}
+    <a href = "/createProject/">新增專案</a>
+    <h2>Projects</h2>
+    {% if usergroup %}
+    <p>專案</p>
+    <table class="table table-hover">
+        <tr>
+            <th>專案名稱</th>
+            <th>狀態</th>
+        </tr>
+        {% for u in usergroup %}
+
+        <tr>
+            {% if u.project.state == 'Labeling' %}
+            <td><a href = "/projectOverview/{{u.project.id}}"> {{ u.project.name }} &nbsp&nbsp&nbsp&nbsp 敘述: {{ u.project.description }}</a></td>
+            <!-- <td><a href = "/labeling/{{u.id}}/?id2=0&&page=1"> {{ u.name }} &nbsp&nbsp&nbsp&nbsp 敘述: {{ u.description }}</a></td> -->
+            <td> {{ u.project.state }} </td>
+            {% elif u.project.state == 'Rechecking' %}
+            <td><a href = "/projectOverview/{{u.project.id}}"> {{ u.project.name }} &nbsp&nbsp&nbsp&nbsp 敘述: {{ u.project.description }}</a></td>
+            <!-- <td><a href = "/relabeling/{{u.id}}/?id2=0&&page=1"> {{ u.name }} &nbsp&nbsp&nbsp&nbsp 敘述: {{ u.description }}</a></td> -->
+            <td> {{ u.project.state }} </td>
+            {% else %}
+            <!-- <td><a href = "/labeling/{{u.id}}/?id2=0"> {{ u.name }} &nbsp&nbsp&nbsp&nbsp 敘述: {{ u.description }}</a></td> -->
+            <td> {{ u.project.name }} &nbsp&nbsp&nbsp&nbsp 敘述: {{ u.project.description }}</td>
+            <td> {{ u.project.state }} </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>你沒有創立過專案</p>
+    {% endif %}
+{% endblock %}

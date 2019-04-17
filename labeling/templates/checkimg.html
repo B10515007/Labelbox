@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} LABELING {% endblock %}
+
+{% block content %}
+
+
+
+
+  <!-- <input type="submit" value="上傳"/> -->
+
+
+<form action="" method="post">{% csrf_token %}
+
+                總共有{{frame}}張 現在是第{{page}}張<br>
+                {{project.member}}認為這是一張{{p.choice}}<br>
+                <td> <img src="/media/{{ p.image }}" width = 640, height = 360><br>
+                <input type="radio" name="judge" value="accept"> 好<br>
+                <input type="radio" name="judge" value="return"> 不好<br>
+                <input type="text" name="comment"> 建議<br>
+                {{asd}}
+                {{message}}
+                <input type="submit" value="Submit"></form>
+
+
+
+
+
+{% endblock %}

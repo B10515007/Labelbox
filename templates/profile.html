@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+        <a href = "/admin/password_change/">更改密碼</a>
+        <h2>個人資料</h2>
+        <table class="table table-hover">
+            <tr>
+                <th>帳號</th>
+                <th>後台管理</th>
+            </tr>
+            <tr>
+              {% if request.user.is_authenticated %}
+                <td> {{ request.user }} </td>
+                <td> {{ request.user.is_staff }} </td>
+                <!-- <td> {{ r.phone_number }} </td>
+                <td> {{ r.address }} </td>
+                <td> <a href="/comment/{{r.id}}/"> 評價 </a> </td> -->
+              {% endif %}
+            </tr>
+
+        </table>
+
+        {% for u in user.labeling_set.all %}
+        <img src="../../media/{{ u.image }}" width = 640, height = 360>
+        {% endfor %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %} Create Project {% endblock %}
+
+{% block content %}
+        <h2>專案名稱:{{p.name}}</h2>
+        已經在裡面的成員:
+        <table class="table table-hover">
+
+        {% for u in g.member.all %}
+        <tr>
+          <td>{{u}}</td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+        <td><form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
+          <div class="form-group">
+          <label for="projectname">加入成員 : </label>
+          {{ form.name }}
+          {{ form.name.errors }}
+          </div>
+          <input type="submit" value="search" class="btn btn-default">
+        </form></td>
+        </tr>
+        </table>
+        <!-- {% if list != '' %}
+          {% for u in list %}
+            <p>{{u.username}}</p>
+          {% endfor %}
+        {% endif %} -->
+{% endblock %}

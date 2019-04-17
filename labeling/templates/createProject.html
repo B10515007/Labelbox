@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} Create Project {% endblock %}
+
+{% block content %}
+        <h2>新增專案</h2>
+
+        {% if form.errors %}
+        <p style="color:red;">
+            請依提示修復表單錯誤
+        </p>
+        {% endif %}
+
+        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
+            <div class="form-group">
+            <label for="projectname">專案名稱 : </label>
+            {{ form.project_name }}
+            {{ form.project_name.errors }}
+            </div>
+            <div class="form-group">
+                <label for="description">專案敘述 : </label>
+            {{ form.description }}
+            {{ form.description.errors }}
+            </div>
+            <fieldset>
+              <legend>選擇圖片</legend>
+            <input type="file" multiple="multiple" name="img" />
+          </fieldset><p>
+            <input type="submit" value="Create" class="btn btn-default">
+        </form>
+{% endblock %}

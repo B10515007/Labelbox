@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} LABELING {% endblock %}
+
+{% block content %}
+
+
+
+
+  <!-- <input type="submit" value="上傳"/> -->
+
+
+<form action="" method="post">{% csrf_token %}
+
+                總共有{{frame}}張 現在是第{{page}}張<br>
+                上次標記為 {{p.choice}}，admin認為 : {{p.comment}}<br>
+                <td> <img src="/media/{{ p.image }}" width = 640, height = 360><br>
+                <input type="radio" name="vehicle" value="poeple"> 人<br>
+                <input type="radio" name="vehicle" value="scenery"> 風景<br>
+                <input type="radio" name="vehicle" value="animal"> 動物<br>
+                <input type="radio" name="vehicle" value="nothing"> 沒什麼<br><br>
+                {{asd}}
+                {{message}}
+                <input type="submit" value="Submit"></form>
+
+
+
+
+
+{% endblock %}

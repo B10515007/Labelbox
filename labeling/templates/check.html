@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+
+{% block title %} Project {% endblock %}
+
+{% block content %}
+
+    <h2>Projects</h2>
+    {% if projects %}
+    <p>專案</p>
+    <table class="table table-hover">
+        <tr>
+            <th>專案名稱</th>
+            <th>人員</th>
+        </tr>
+        {% for p in projects %}
+        <tr>
+            <td><a href = "/checkimg/{{p.id}}/?id2=0&&page=1"> {{ p.name }} &nbsp&nbsp&nbsp&nbsp 敘述: {{ p.description }}</a></td>
+            <td> {{ p.member }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>沒有人繳交</p>
+    {% endif %}
+{% endblock %}

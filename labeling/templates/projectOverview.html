@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% block title %} Project {% endblock %}
+
+{% block content %}
+
+
+    <h2>{{p.name}}</h2>
+    <p>敘述:{{p.description}}</p>
+    <p>總共有 {{p.labeling_set.count}}張圖片 </p>
+    <table class="table table-hover">
+      <tr>
+        <th>
+          {% if p.state == 'Labeling'%}
+            <a href = "/labeling/{{p.id}}/?id2=0&&page=1"> START LABELING</a>
+        </th>
+        <th>
+          {% elif p.state == 'Rechecking' %}
+          <a href = "/relabeling/{{p.id}}/?id2=0&&page=1"> START LABELING</a>
+        </th>
+        <th>
+          {% endif %}
+
+        <a href = "/addMember/{{p.id}}"> Add Member</a>
+      </th>
+
+      </tr>
+
+{% endblock %}
